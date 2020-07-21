@@ -1,0 +1,37 @@
+<div class="product">
+    <img src="{{ product.imageUrl }}" class="img-fluid" alt="{{ product.name }}">
+    <div class="product-detail">
+        <h5 class="product-detail-name">{{ product.name }}</h5>
+        <p>{{ product.price }}€</p>
+        <button class="btn product-button" data-toggle="modal" data-target="#buyProductModal">BUY</button>
+    </div>
+</div>
+
+<div class="modal fade" id="buyProductModal" tabindex="-1" role="dialog" aria-labelledby="buyProductModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="buyProductModalLabel">Do you wanna buy it?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="loginForm">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Username" id="username" formControlName="username">
+                    <p class="alert alert-danger" *ngIf="loginForm.controls.username.invalid && loginForm.controls.username.touched">Username must not be empty</p>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="Password" id="password" formControlName="password">
+                    <p class="alert alert-danger" *ngIf="loginForm.controls.password.invalid && loginForm.controls.password.touched">Password must not be empty</p>
+                </div>
+                <div>    
+                    <button class="btn cancel-button" type="button" data-dismiss="modal">CANCEL</button>
+                    <button class="btn confirm-button" type="button" data-dismiss="modal" (click)="onSubmit()" [disabled]="!loginForm.valid">CONFIRM</button>
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+</div>

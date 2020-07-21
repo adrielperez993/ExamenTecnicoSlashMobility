@@ -1,0 +1,10 @@
+.header {
+    margin: auto;
+    background-color: black;
+    padding: 10px 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+}
